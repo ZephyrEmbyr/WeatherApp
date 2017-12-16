@@ -1,2 +1,39 @@
-<h1>WeatherApp#index</h1>
-<p>Find me in app/views/weather_app/index.html.erb</p>
+<h1>Welcome to the weather!</h1>
+
+<!-- equivalent html code
+<form name="bidInput" action="auction_app/submit" method "post">
+	<div>
+	<p>Your Name: <input type="text" name="bidderInput"> </p>
+	<p>Your Bid: <input type="text" name="amountInput"> </p>
+	<p> <input type="submit" value="enter_bid"> </p>
+	</div>
+</form>
+
+-->
+
+<%= form_tag do%>
+	<p>Your Name: <%= text_field_tag(:nameInput) %> </p>
+	<p>Your Zip: <%= text_field_tag(:zipInput) %> </p>
+	<p> <%= submit_tag "Enter Info"%> </p>
+<% end %>
+
+<table>
+	<thread>
+		<tr>
+			<th> Name </th>
+			<th> Zip </th>
+		</tr>
+	</thread>
+
+	<tbody>
+		<% @allClimate.each do |climate| %>
+			<tr>
+				<td> <%= climate.name %> </td>
+				<td> <%= climate.zip %> </td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<!-- Another form on the same page:
+	Find the leader's name -->
