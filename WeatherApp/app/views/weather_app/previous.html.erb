@@ -1,0 +1,23 @@
+<p> Previous Weather Lookups </p>
+<table>
+	<thread>
+		<tr>
+			<th> Name </th>
+			<th> City </th>
+			<th> Temperature </th>
+			<th> Conditions </th>
+		</tr>
+	</thread>
+
+	<tbody>
+		<% @allClimate.reverse_each do |climate| %>
+			<tr>
+				<td> <%= climate.name %> </td>
+				<td> <%= climate.city %> </td>
+				<td> <%= climate.temperature %> </td>
+				<td> <%= climate.sky %> </td>
+				
+			</tr>
+		<% end %>
+	</tbody>
+</table>

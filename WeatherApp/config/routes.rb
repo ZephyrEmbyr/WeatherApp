@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root "weather_app#index"
   #get 'weather_app/index'
   get "weather_app" => "weather_app#index"
+  # get "/previous" => "public/previous.html.erb"
+  get "/lookups" => "lookups#index"
   get "/" => "weather_app#index"
   post "/" => "weather_app#enterZip"
 
