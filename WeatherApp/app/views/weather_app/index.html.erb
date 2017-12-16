@@ -1,4 +1,4 @@
-<h1>Welcome to the weather!</h1>
+<h1>Welcome to your Personalized Weather!</h1>
 
 <!-- equivalent html code
 <form name="bidInput" action="auction_app/submit" method "post">
@@ -10,6 +10,8 @@
 </form>
 
 -->
+
+<p><a href="http://localhost:3000/lookups">Previous Weather Lookups</a></p>
 
 <%= form_tag do%>
 	<p>Your Name: <%= text_field_tag(:nameInput) %> </p>
@@ -36,12 +38,13 @@ elsif @allClimate.last.sky == "Rain"
 	image_tag "rain.jpg"
 elsif @allClimate.last.sky == "Windy"
 	image_tag "breezy.png"
+elsif @allClimate.last.sky == "Scattered Showers"
+	image_tag "rain.jpg"
 else
 	image_tag "sun.png"
 end
 %>
 
-<p><a href="http://localhost:3000/lookups">Previous Weather Lookups</a></p>
 
 
 
