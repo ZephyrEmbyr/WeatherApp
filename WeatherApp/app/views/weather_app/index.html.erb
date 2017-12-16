@@ -17,11 +17,25 @@
 	<p> <%= submit_tag "Enter Info"%> </p>
 <% end %>
 
-<p>Hi <%= @allClimate.last.name.capitalize %>! Your current weather in <%= @allClimate.last.city %> is <%= @allClimate.last.temperature %> degrees Fahrenheit. The conditions outside are <%= @allClimate.last.sky.downcase %>.</p>
+<p>Hi <%= @allClimate.last.name.titleize %>! Your current weather in <%= @allClimate.last.city %> is <%= @allClimate.last.temperature %> degrees Fahrenheit. The conditions outside are <%= @allClimate.last.sky.downcase %>.</p>
 
 <%=
 if @allClimate.last.sky == "Partly Cloudy"
-	image_tag "partlycloud.png"
+	image_tag "partlycloudy.png"
+elsif @allClimate.last.sky == "Sunny"
+	image_tag "sun.png"
+elsif @allClimate.last.sky == "Mostly Cloudy"
+	image_tag "mostlycloudy.png"
+elsif @allClimate.last.sky == "Cloudy"
+	image_tag "cloudy.png"
+elsif @allClimate.last.sky == "Snow"
+	image_tag "snow.jpg"
+elsif @allClimate.last.sky == "Breezy"
+	image_tag "breezy.png"
+elsif @allClimate.last.sky == "Rain"
+	image_tag "rain.jpg"
+elsif @allClimate.last.sky == "Windy"
+	image_tag "breezy.png"
 else
 	image_tag "sun.png"
 end
