@@ -13,15 +13,18 @@
 
 <%= form_tag do%>
 	<p>Your Name: <%= text_field_tag(:nameInput) %> </p>
-	<p>Your Zip: <%= text_field_tag(:zipInput) %> </p>
+	<p>Your Location: <%= text_field_tag(:locationInput) %> </p>
 	<p> <%= submit_tag "Enter Info"%> </p>
 <% end %>
-
+<p> Previous Weather Lookups </p>
 <table>
 	<thread>
 		<tr>
 			<th> Name </th>
 			<th> Zip </th>
+			<th> City </th>
+			<th> Temperature </th>
+			<th> Conditions </th>
 		</tr>
 	</thread>
 
@@ -30,6 +33,9 @@
 			<tr>
 				<td> <%= climate.name %> </td>
 				<td> <%= climate.zip %> </td>
+				<td> <%= climate.city %> </td>
+				<td> <%= climate.temperature %> </td>
+				<td> <%= climate.sky %> </td>
 			</tr>
 		<% end %>
 	</tbody>

@@ -1,18 +1,25 @@
+require 'weather-api'
+
 class WeatherAppController < ApplicationController
   protect_from_forgery with: :null_session
   def index
 	puts "--------------- In Index -----------------"
 	@allClimate = Climate.all
 	puts "# of bids = #{@allClimate.size}"
-	@allClimate = @allClimate.sort_by {|climate| [climate.name, climate.temperature]}
+	#@allClimate = @allClimate.sort_by {|climate| [climate.name, climate.temperature]}
 
   end
 
   def enterZip
 	puts "--------------- In Enter Zip -----------------"
 	name = params[:nameInput]
-	zip = params[:zipInput]
-	map = {"name" => name, "zip" => zip}
+	city = params[:locationInput]
+	response = Weather.lookup_by_location(city, Weather::Units::FAHRENHEIT)
+	zip = "00000"
+	temperature = response.condition.temp.to_s
+	sky = response.condition.text
+
+	map = {"name" => name, "zip" => zip, "city" => city, "temperature" => temperature, "sky" => sky}
 	newRow = Climate.new(map)
 	respond_to do |format|
 		if newRow.save
@@ -37,7 +44,7 @@ class WeatherAppController < ApplicationController
   # end
 
   def handlePost
-  	if params[:commit] == "Enter Bid"
+  	if params[:commit] == "Enter Info"
   		enterZip
   	# elsif params[:commit] == "Get Leader"
   	# 	getLeader
