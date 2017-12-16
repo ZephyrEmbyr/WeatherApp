@@ -16,12 +16,23 @@
 	<p>Your Location: <%= text_field_tag(:locationInput) %> </p>
 	<p> <%= submit_tag "Enter Info"%> </p>
 <% end %>
+
+<p>Hi <%= @allClimate.last.name.capitalize %>! Your current weather in <%= @allClimate.last.city %> is <%= @allClimate.last.temperature %> degrees Fahrenheit. The conditions outside are <%= @allClimate.last.sky.downcase %>.</p>
+
+<%=
+if @allClimate.last.sky == "Partly Cloudy"
+	image_tag "partlycloud.png"
+else
+	image_tag "sun.png"
+end
+%>
+
+
 <p> Previous Weather Lookups </p>
 <table>
 	<thread>
 		<tr>
 			<th> Name </th>
-			<th> Zip </th>
 			<th> City </th>
 			<th> Temperature </th>
 			<th> Conditions </th>
@@ -29,13 +40,13 @@
 	</thread>
 
 	<tbody>
-		<% @allClimate.each do |climate| %>
+		<% @allClimate.reverse_each do |climate| %>
 			<tr>
 				<td> <%= climate.name %> </td>
-				<td> <%= climate.zip %> </td>
 				<td> <%= climate.city %> </td>
 				<td> <%= climate.temperature %> </td>
 				<td> <%= climate.sky %> </td>
+				
 			</tr>
 		<% end %>
 	</tbody>

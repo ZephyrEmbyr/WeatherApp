@@ -12,14 +12,14 @@ class WeatherAppController < ApplicationController
 
   def enterZip
 	puts "--------------- In Enter Zip -----------------"
-	name = params[:nameInput]
-	city = params[:locationInput]
-	response = Weather.lookup_by_location(city, Weather::Units::FAHRENHEIT)
+	@name = params[:nameInput]
+	@city = params[:locationInput]
+	@response = Weather.lookup_by_location(@city, Weather::Units::FAHRENHEIT)
 	zip = "00000"
-	temperature = response.condition.temp.to_s
-	sky = response.condition.text
+	@temperature = @response.condition.temp.to_s
+	@sky = @response.condition.text
 
-	map = {"name" => name, "zip" => zip, "city" => city, "temperature" => temperature, "sky" => sky}
+	map = {"name" => @name, "zip" => zip, "city" => @city, "temperature" => @temperature, "sky" => @sky}
 	newRow = Climate.new(map)
 	respond_to do |format|
 		if newRow.save
